@@ -1,10 +1,29 @@
 // C Program for Dino Game
-#include <conio.h>
-#include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <termios.h>
 #include <time.h>
-#include <windows.h>
+#include <fcntl.h>
 
+// Function to move the cursor to a specific position
+void moveTo(int x, int y)
+{
+    printf("\033[%d;%dH", y, x);
+    fflush(stdout);
+}
+
+// Function to clear the screen
+void clearScreen()
+{
+    system("clear");
+}
+
+// Function to pause execution for a given number of milliseconds
+void pauseGame(unsigned int milliseconds)
+{
+    usleep(milliseconds * 1000);
+}
 // Main function
 int main()
 {
