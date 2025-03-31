@@ -1,4 +1,3 @@
-// C Program for Dino Game (Linux/macOS Compatible)
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -6,26 +5,22 @@
 #include <time.h>
 #include <fcntl.h>
 
-// Function to move the cursor to a specific position
 void moveTo(int x, int y)
 {
     printf("\033[%d;%dH", y, x);
     fflush(stdout);
 }
 
-// Function to clear the screen
 void clearScreen()
 {
     system("clear");
 }
 
-// Function to pause execution for a given number of milliseconds
 void pauseGame(unsigned int milliseconds)
 {
     usleep(milliseconds * 1000);
 }
 
-// Cross-platform kbhit() function for Linux/macOS
 int kbhit(void)
 {
     struct termios oldt, newt;
@@ -53,7 +48,6 @@ int kbhit(void)
     return 0;
 }
 
-// Function to display game information on the console
 void displayGameInfo()
 {
     clearScreen();
@@ -66,10 +60,8 @@ void displayGameInfo()
         printf("=");
 }
 
-// Global variables for jump height and game speed
 int jumpHeight = 0, gameSpeed = 40;
 
-// Function to display the character on the console
 void displayCharacter(int jumpType)
 {
     static int animationState = 1;
@@ -133,7 +125,6 @@ void displayCharacter(int jumpType)
     pauseGame(gameSpeed);
 }
 
-// Function to display the obstacle on the console
 void displayObstacle()
 {
     static int obstaclePosition = 0, score = 0;
@@ -144,7 +135,7 @@ void displayObstacle()
         gameSpeed = 40;
         moveTo(36, 8);
         printf("Game Over!");
-        getchar(); // Wait for keypress
+        getchar(); 
         moveTo(36, 8);
         printf("          ");
     }
@@ -172,7 +163,6 @@ void displayObstacle()
     }
 }
 
-// Main function
 int main()
 {
     char input;
